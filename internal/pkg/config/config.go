@@ -11,40 +11,37 @@ import (
 	"runtime"
 )
 
+type Server struct {
+	Port string `json:"port"`
+}
+
 type Github struct {
-	ApiKey string
+	ApiKey string `json:"apikey"`
 }
 
 type DB struct {
-	User     string
-	Password string
-	Host     string
-	Port     string
+	User     string `json:"user"`
+	Password string `json:"password"`
+	Host     string `json:"host"`
+	Port     string `json:"port"`
 }
 type ElasticSearch struct {
-	Username string
-	Password string
-	Address  string
+	Username string `json:"username"`
+	Password string `json:"password"`
+	Address  string `json:"address"`
 }
 
 type Organization struct {
-	Name string
-	Team string
-}
-
-type RabbitMQ struct {
-	Host     string
-	Port     string
-	User     string
-	Password string
+	Name string `json:"name"`
+	Team string `json:"team"`
 }
 
 type Config struct {
-	Github
-	DB
-	ElasticSearch
-	Organization
-	RabbitMQ
+	Server        Server        `json:"server"`
+	Github        Github        `json:"github"`
+	DB            DB            `json:"db"`
+	ElasticSearch ElasticSearch `json:"elasticSearch"`
+	Organization  Organization  `json:"organization"`
 }
 
 func LoadConfig() (*Config, error) {
